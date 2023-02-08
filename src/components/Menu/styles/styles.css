@@ -1,0 +1,14 @@
+.menu-container {
+  display: flex;
+  background-color: var(--menu-background-color);
+  width: clamp(150px, 200px, 300px);
+  align-items: center;
+  justify-content: center;
+}
+.menu-container > .menu > .nav > .nav-item > .nav-link {
+  font-size: 20px;
+  color: var(--main-text-color);
+}
+.menu-container > .menu > .nav > .nav-item > .nav-link:hover {
+  color: var(--text-hover-color);
+}

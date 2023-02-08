@@ -1,0 +1,11 @@
+.modal-content {
+  background-color: #181818 !important;
+}
+.modal-header {
+  border-bottom: var(--bs-modal-header-border-width) solid
+    var(--card-backgrournd-color);
+}
+.modal-footer {
+  border-top: var(--bs-modal-footer-border-width) solid
+    var(--card-backgrournd-color);
+}
