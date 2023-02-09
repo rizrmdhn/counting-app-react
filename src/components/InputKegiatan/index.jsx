@@ -20,7 +20,7 @@ function InputKegiatan() {
   };
 
   return (
-    <div className="input-data-kegiatan">
+    <div className="input-data-kegiatan animate__animated animate__fadeIn">
       <form>
         <div className="mb-3">
           <label htmlFor="namaKegiatan" className="form-label">
@@ -47,13 +47,22 @@ function InputKegiatan() {
             onChange={(e) => setTahunKegiatan(parseInt(e.target.value))}
           />
         </div>
-        <button
-          type="submit"
-          className="btn btn-primary"
-          onClick={(e) => handleSubmit(e)}
-        >
-          Submit
-        </button>
+        <div className="action-button">
+          <button
+            type="button"
+            className="btn-back btn btn-danger"
+            onClick={() => navigate(-1)}
+          >
+            Back
+          </button>
+          <button
+            type="submit"
+            className="btn-submit btn btn-primary"
+            onClick={(e) => handleSubmit(e)}
+          >
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );

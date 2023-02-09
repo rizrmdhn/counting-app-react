@@ -1,0 +1,10 @@
+.input-data-acara .action-button {
+  display: flex;
+  justify-content: space-between;
+}
+.input-data-acara .action-button > .btn-back {
+  font-size: 20px;
+}
+.input-data-acara .action-button > .btn-submit {
+  font-size: 20px;
+}

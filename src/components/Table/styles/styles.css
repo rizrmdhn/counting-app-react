@@ -1,0 +1,187 @@
+/* for table */
+
+.tg {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: auto;
+}
+.tg tr {
+  text-align: center;
+}
+.tg td {
+  border-color: var(--card-backgrournd-color);
+  border-style: solid;
+  border-width: 1px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  overflow: hidden;
+  padding: 10px 5px;
+  word-break: normal;
+}
+.tg th {
+  border-color: var(--card-backgrournd-color);
+  border-style: solid;
+  border-width: 1px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  overflow: hidden;
+  padding: 10px 5px;
+  word-break: normal;
+}
+.tg .tg-0pky {
+  text-align: center;
+  vertical-align: middle;
+  width: 45px;
+}
+.tg .tg-kegiatanFisik {
+  width: 250px;
+}
+.tg .tg-volume {
+  width: 150px;
+}
+.tg .tg-kegiatanFisikName {
+  text-align: left;
+  vertical-align: middle;
+}
+.tg .tg-quantity {
+  width: 50px;
+  text-align: center;
+  vertical-align: middle;
+}
+.tg .tg-unit {
+  width: 50px;
+  text-align: center;
+  vertical-align: middle;
+}
+.tg .tg-alokasiDana {
+  width: 150px;
+  text-align: center;
+  vertical-align: middle;
+}
+.tg .tg-totalPrice {
+  text-align: center;
+  vertical-align: middle;
+}
+.tg .tg-0lax {
+  text-align: left;
+  vertical-align: top;
+  width: 550px;
+}
+.tg .tg-actionButton {
+  text-align: right;
+  vertical-align: middle;
+  width: 50px;
+}
+.tg .tg-editMode {
+  text-align: center;
+  vertical-align: middle;
+  width: 75px;
+  transition: 500ms ease-in-out;
+}
+.tg .tg-editbtn {
+    background-color: var(--card-backgrournd-color);
+    border: 1px solid var(--card-backgrournd-color);
+    color: white;
+    margin-right: 5px;
+    border-radius: 10px;
+    text-align: center;
+    vertical-align: middle;
+    width: calc(50% - 5px);
+}
+.tg .tg-editbtn:hover {
+    box-shadow: 0 0 10px 0 var(--card-backgrournd-color);
+    cursor: pointer;
+}
+.tg .tg-deleteButton {
+    margin-left: 5px;
+    border-radius: 10px;
+    border: 1px solid red;
+    text-align: center;
+    vertical-align: middle;
+    background-color: red;
+    color: white;
+    width: calc(50% - 5px);
+}
+.tg .tg-deleteButton:hover {
+    box-shadow: 0 0 10px 0 red;
+    cursor: pointer;
+}
+.bg-yellow {
+  background-color: var(--card-backgrournd-color);
+}
+.bg-green {
+  background-color: green;
+}
+@media screen and (max-width: 767px) {
+  .tg {
+    width: auto !important;
+  }
+  .tg col {
+    width: auto !important;
+  }
+  .tg-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* button kegiatan fisik */
+
+.btn-addKegiatanFisik {
+  background-color: var(--card-backgrournd-color);
+  color: white;
+  border: none;
+  padding: 5px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition: 250ms ease-in-out;
+  border-radius: 10px;
+}
+
+.btn-addKegiatanFisik:hover {
+  background-color: var(--card-backgrournd-color);
+  color: white;
+  box-shadow: 0 0 10px 0 var(--card-backgrournd-color);
+  cursor: pointer;
+}
+
+.btn-editKegiatanFisik {
+  background-color: var(--card-backgrournd-color);
+  color: white;
+  border: none;
+  padding: 5px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition: 250ms ease-in-out;
+  border-radius: 10px;
+}
+
+.btn-editKegiatanFisik:hover {
+  background-color: var(--card-backgrournd-color);
+  color: white;
+  box-shadow: 0 0 10px 0 var(--card-backgrournd-color);
+  cursor: pointer;
+}
+
+/* action button */
+
+.add-kegiatan-button {
+  transition: 250ms ease-in-out;
+  margin: 25px 10px;
+}
+.edit-kegiatan-button {
+  margin: 25px 0px;
+  margin-right: 10px;
+}
+.bi-pencil-square {
+  margin-right: 10px;
+}

@@ -1,0 +1,10 @@
+.edit-data-kegiatanFisik > .action-button {
+  margin: 25px 0px;
+  text-align: end;
+}
+.btn-cancelEdit {
+  margin-right: 10px;
+}
+.btn-edit {
+  margin-left: 10px;
+}

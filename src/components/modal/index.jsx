@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addKegiatanFisik, showDataId } from "../../redux/dataSlice";
 import CurrencyInput from "react-currency-input-field";
@@ -30,6 +30,12 @@ function Modal() {
     setQuantity(0);
     setUnit("");
     setAlokasiDana(0);
+
+    // close modal
+    const backdrop = document.querySelector(".modal-backdrop");
+    const modal = document.getElementById("modalInputKegiatanFisik");
+    modal.classList.remove("show");
+    backdrop.classList.remove("show");
   };
 
   return (

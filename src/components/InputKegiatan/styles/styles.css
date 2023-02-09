@@ -1,0 +1,10 @@
+.input-data-kegiatan .action-button {
+  display: flex;
+  justify-content: space-between;
+}
+.input-data-kegiatan .action-button > .btn-back {
+    font-size: 20px;
+}
+.input-data-kegiatan .action-button > .btn-submit {
+    font-size: 20px;
+}
