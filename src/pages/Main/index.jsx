@@ -31,7 +31,12 @@ function MainPage({ lists, viewData }) {
           />
           <Route path="/data/add" element={<InputAcara />} />
           <Route path="/data/add-kegiatan" element={<InputKegiatan />} />
-          <Route path="/data/edit/:id" element={<EditKegiatanFisik />} />
+          <Route path="/data/kegiatan/:id/edit" element={<InputKegiatan />} />
+          <Route path="/data/:id/edit" element={<InputAcara />} />
+          <Route
+            path="/data/kegiatan-fisik/:id/edit"
+            element={<EditKegiatanFisik />}
+          />
         </Routes>
         <Modal />
       </Suspense>

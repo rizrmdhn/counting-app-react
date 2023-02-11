@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addKegiatan } from "../../redux/dataSlice";
+import { addKegiatan, editKegiatan } from "../../redux/dataSlice";
 import "./styles/styles.css";
 
 function InputKegiatan() {
@@ -11,12 +11,45 @@ function InputKegiatan() {
   const [namaKegiatan, setNamaKegiatan] = useState("");
   const [tahunKegiatan, setTahunKegiatan] = useState("");
 
+  useEffect(() => {
+    if (location.pathname !== `/data/add-kegiatan`) {
+      const editData = window.localStorage.getItem("editKegiatanData");
+      if (editData) {
+        const data = JSON.parse(editData);
+        setNamaKegiatan(data.name);
+        setTahunKegiatan(data.year);
+      } else {
+        setNamaKegiatan("");
+        setTahunKegiatan("");
+      }
+    }
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const acaraId = window.localStorage.getItem("acaraId");
-    dispatch(addKegiatan({ namaKegiatan, tahunKegiatan, acaraId }));
+    if (location.pathname === `/data/add-kegiatan`) {
+      const acaraId = window.localStorage.getItem("acaraId");
+      dispatch(addKegiatan({ namaKegiatan, tahunKegiatan, acaraId }));
+      window.localStorage.removeItem("acaraId");
+      navigate("/acara");
+    } else {
+      const editData = window.localStorage.getItem("editKegiatanData");
+      const data = JSON.parse(editData);
+      dispatch(
+        editKegiatan({
+          id: data.id,
+          namaKegiatan,
+          tahunKegiatan,
+          acaraId: data.acaraId,
+        })
+      );
+      navigate(`/acara/${data.acaraId}/kegiatan`);
+    }
+  };
+
+  const handleBack = () => {
     window.localStorage.removeItem("acaraId");
-    navigate("/acara");
+    navigate(-1);
   };
 
   return (
@@ -51,7 +84,7 @@ function InputKegiatan() {
           <button
             type="button"
             className="btn-back btn btn-danger"
-            onClick={() => navigate(-1)}
+            onClick={() => handleBack()}
           >
             Back
           </button>

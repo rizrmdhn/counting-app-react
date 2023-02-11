@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Card from "./views/Card";
 import { useNavigate } from "react-router-dom";
 import "./styles/style.css";
@@ -9,10 +9,6 @@ import Loader from "../Loader";
 function Data({ lists, viewData }) {
   const isLoading = useSelector(isLoadingState);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    console.log(isLoading);
-  }, []);
 
   return (
     <div className="data-container animate__animated animate__fadeIn">

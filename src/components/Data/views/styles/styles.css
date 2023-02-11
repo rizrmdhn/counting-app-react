@@ -22,99 +22,6 @@
   cursor: pointer;
 }
 
-/* for table */
-
-.tg {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 750px;
-}
-.tg tr {
-  text-align: center;
-}
-.tg td {
-  border-color: var(--card-backgrournd-color);
-  border-style: solid;
-  border-width: 1px;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-  overflow: hidden;
-  padding: 10px 5px;
-  word-break: normal;
-}
-.tg th {
-  border-color: var(--card-backgrournd-color);
-  border-style: solid;
-  border-width: 1px;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-  font-weight: normal;
-  overflow: hidden;
-  padding: 10px 5px;
-  word-break: normal;
-}
-.tg .tg-0pky {
-  text-align: center;
-  vertical-align: middle;
-  width: 45px;
-}
-.tg .tg-kegiatanFisik {
-  width: 250px;
-}
-.tg .tg-volume {
-  width: 150px;
-}
-.tg .tg-kegiatanFisikName {
-  text-align: left;
-  vertical-align: middle;
-}
-.tg .tg-quantity {
-  width: 50px;
-  text-align: center;
-  vertical-align: middle;
-}
-.tg .tg-unit {
-  width: 50px;
-  text-align: center;
-  vertical-align: middle;
-}
-.tg .tg-alokasiDana {
-  width: 150px;
-  text-align: center;
-  vertical-align: middle;
-}
-.tg .tg-totalPrice {
-  text-align: center;
-  vertical-align: middle;
-}
-.tg .tg-0lax {
-  text-align: left;
-  vertical-align: top;
-}
-.tg .tg-addKegiatan {
-  text-align: right;
-  vertical-align: middle;
-  width: 50px;
-}
-.bg-yellow {
-  background-color: var(--card-backgrournd-color);
-}
-.bg-green {
-  background-color: green;
-}
-@media screen and (max-width: 767px) {
-  .tg {
-    width: auto !important;
-  }
-  .tg col {
-    width: auto !important;
-  }
-  .tg-wrap {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-}
-
 /* button add kegiatan */
 
 .add-kegiatan-button {
@@ -143,5 +50,61 @@
   background-color: var(--card-backgrournd-color);
   color: white;
   box-shadow: 0 0 10px 0 var(--card-backgrournd-color);
+  cursor: pointer;
+}
+
+/* card button */
+
+.card > .card-body > .card-actions {
+  text-align: end;
+}
+
+.card > .card-body > .card-actions > .edit-btn {
+  background-color: var(--card-backgrournd-color);
+  color: white;
+  border: none;
+  width: 50px;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 5px;
+  cursor: pointer;
+  transition: 250ms ease-in-out;
+  border-radius: 10px;
+}
+
+.card > .card-body > .card-actions > .edit-btn > .bi-pencil-square {
+  margin-right: 0px;
+}
+
+.card > .card-body > .card-actions > .edit-btn:hover {
+  background-color: var(--card-backgrournd-color);
+  color: white;
+  box-shadow: 0 0 10px 0 var(--card-backgrournd-color);
+  cursor: pointer;
+}
+
+.card > .card-body > .card-actions > .delete-btn {
+  background-color: red;
+  color: white;
+  border: none;
+  width: 50px;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 5px;
+  cursor: pointer;
+  transition: 250ms ease-in-out;
+  border-radius: 10px;
+}
+
+.card > .card-body > .card-actions > .delete-btn:hover {
+  background-color: red;
+  color: white;
+  box-shadow: 0 0 10px 0 red;
   cursor: pointer;
 }

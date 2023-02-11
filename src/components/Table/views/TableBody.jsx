@@ -38,8 +38,9 @@ function TableBody({ kegiatan, itemId }) {
       acaraId: itemId,
     };
     dispatch(getViewEditData(datas));
-    navigate(`/data/edit/${data.kegiatanFisikId}`);
+    navigate(`/data/kegiatan-fisik/${data.id}/edit`);
   };
+  
   return (
     <>
       <tbody>
@@ -61,29 +62,27 @@ function TableBody({ kegiatan, itemId }) {
               {currencyFormat(kegiatanFisik.price)}
             </td>
             {editMode === true ? (
-              <div className="animate__animated animate__fadeIn">
-                <td className="tg-editMode ">
-                  <button
-                    className="tg-editbtn"
-                    onClick={() => handleEdit(kegiatanFisik, itemId)}
-                  >
-                    <i className="bi bi-pencil-square"></i>
-                  </button>
-                  <button
-                    className="tg-deleteButton"
-                    onClick={() =>
-                      dispatch(
-                        deleteKegiatanFisik({
-                          acaraId: itemId,
-                          kegiatanFisikId: kegiatanFisik.id,
-                        })
-                      )
-                    }
-                  >
-                    <i className="bi bi-trash"></i>
-                  </button>
-                </td>
-              </div>
+              <td className="tg-editMode animate__animated animate__fadeIn">
+                <button
+                  className="tg-editbtn"
+                  onClick={() => handleEdit(kegiatanFisik, itemId)}
+                >
+                  <i className="bi bi-pencil-square"></i>
+                </button>
+                <button
+                  className="tg-deleteButton"
+                  onClick={() =>
+                    dispatch(
+                      deleteKegiatanFisik({
+                        acaraId: itemId,
+                        kegiatanFisikId: kegiatanFisik.id,
+                      })
+                    )
+                  }
+                >
+                  <i className="bi bi-trash"></i>
+                </button>
+              </td>
             ) : null}
           </tr>
         ))}

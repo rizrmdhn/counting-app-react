@@ -11,6 +11,12 @@ const Toast = MySwal.mixin({
     showConfirmButton: false,
     timer: 3000,
     timerProgressBar: true,
+    showClass: {
+        popup: `animate__animated animate__fadeInRight`,
+    },
+    hideClass: {
+        popup: 'animate__animated animate__fadeOutRight',
+    },
 });
 
 export const dataSlice = createSlice({
@@ -107,16 +113,15 @@ export const addAcara = (data) => {
             return acara;
         }
 
-        try {
-            await addHandler();
-            dispatch(fetchData());
-        } catch (error) {
+        await addHandler().catch((error) => {
             MySwal.fire({
                 icon: 'error',
                 title: 'Oops...',
                 text: error.response.data.message,
             })
-        }
+        });
+
+        dispatch(fetchData());
     }
 }
 
@@ -136,16 +141,15 @@ export const addKegiatan = (data) => {
             const { acara } = res.data.data;
             return acara;
         }
-        try {
-            await addHandler();
-            dispatch(fetchViewData(acaraId));
-        } catch (error) {
-            throw MySwal.fire({
+
+        await addHandler().catch((error) => {
+            MySwal.fire({
                 icon: 'error',
                 title: 'Oops...',
                 text: error.response.data.message,
             })
-        }
+        });
+        dispatch(fetchViewData(acaraId));
     }
 }
 
@@ -169,16 +173,14 @@ export const addKegiatanFisik = (data) => {
             return acara;
         }
 
-        try {
-            await addHandler();
-            dispatch(fetchViewData(acaraId));
-        } catch (error) {
-            throw MySwal.fire({
+        await addHandler().catch((error) => {
+            MySwal.fire({
                 icon: 'error',
                 title: 'Oops...',
                 text: error.response.data.message,
             })
-        }
+        });
+        dispatch(fetchViewData(acaraId));
     }
 }
 
@@ -210,6 +212,82 @@ export const getViewEditData = (data) => {
     }
 }
 
+
+export const deleteAcara = (id) => {
+    return async (dispatch) => {
+        const deleteHandler = async () => {
+            const res = await axios.delete(`http://localhost:5000/acara/${id}`)
+            return res;
+        }
+
+        MySwal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+            reverseButtons: true,
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                await deleteHandler().catch((err) => {
+                    MySwal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: err.response.data.message,
+                    })
+                }).then((res) => {
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Data berhasil dihapus',
+                    });
+                });
+                dispatch(fetchData());
+            }
+        });
+
+    }
+}
+
+
+export const deleteKegiatan = (data) => {
+    return async (dispatch) => {
+        const { acaraId, kegiatanId } = data;
+        const deleteHandler = async () => {
+            const res = await axios.delete(`http://localhost:5000/kegiatan/${kegiatanId}`)
+            return res;
+        }
+
+        MySwal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+            reverseButtons: true,
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                await deleteHandler().catch((err) => {
+                    MySwal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: err.response.data.message,
+                    })
+                }).then(() => {
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Data berhasil dihapus',
+                    });
+                });
+                dispatch(fetchViewData(acaraId));
+            }
+        });
+    }
+}
+
 export const deleteKegiatanFisik = (data) => {
     return async (dispatch) => {
         const { kegiatanFisikId, acaraId } = data;
@@ -218,18 +296,89 @@ export const deleteKegiatanFisik = (data) => {
             return res;
         }
 
-        try {
-            await deleteHandler();
-            dispatch(fetchViewData(acaraId));
-        } catch (error) {
+
+        MySwal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+            reverseButtons: true,
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                await deleteHandler().catch((err) => {
+                    MySwal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: err.response.data.message,
+                    })
+                }).then(() => {
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Kegiatan fisik berhasil dihapus',
+                    });
+                });
+                dispatch(fetchViewData(acaraId));
+            }
+        });
+    }
+}
+
+export const editAcara = (data) => {
+    return async (dispatch) => {
+        const { id, namaAcara, tahunAcara, } = data;
+        const editHandler = async () => {
+            const res = await axios.put(`http://localhost:5000/acara/${id}`, {
+                namaAcara: namaAcara,
+                tahunAcara: tahunAcara,
+            });
+            Toast.fire({
+                icon: 'success',
+                title: 'Data berhasil diubah',
+            });
+            return res;
+        }
+
+        await editHandler().catch((err) => {
             MySwal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: error.response.data.message,
+                text: err.response.data.message,
             })
-        }
+        });
+
+        dispatch(fetchData());
     }
-}
+};
+
+export const editKegiatan = (data) => {
+    return async (dispatch) => {
+        const { id, namaKegiatan, tahunKegiatan, acaraId, } = data;
+        const editHandler = async () => {
+            const res = await axios.put(`http://localhost:5000/kegiatan/${id}`, {
+                namaKegiatan: namaKegiatan,
+                tahunKegiatan: tahunKegiatan,
+                acaraId
+            });
+            Toast.fire({
+                icon: 'success',
+                title: 'Data berhasil diubah',
+            });
+            return res;
+        }
+
+        await editHandler().catch((err) => {
+            MySwal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: err.response.data.message,
+            })
+        });
+        dispatch(fetchViewData(acaraId));
+    }
+};
 
 export const editKegiatanFisik = (data) => {
     return async (dispatch) => {
@@ -249,16 +398,15 @@ export const editKegiatanFisik = (data) => {
             return res;
         }
 
-        try {
-            await editHandler();
-            dispatch(fetchViewData(acaraId));
-        } catch (error) {
+        await editHandler().catch((err) => {
             MySwal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: error,
+                text: err.response.data.message,
             })
-        }
+        });
+
+        dispatch(fetchViewData(acaraId));
     }
 }
 

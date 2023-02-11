@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Table from "./views/Table";
 import "./styles/styles.css";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -15,6 +15,8 @@ function TableContainer({ viewData }) {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const [editMode, setEditMode] = useState(false);
+
   useEffect(() => {
     if (viewData.length === 0) {
       const id = location.pathname.split("/")[2];
@@ -23,10 +25,15 @@ function TableContainer({ viewData }) {
       return;
     }
   }, []);
+
   const handleAddKegiatan = () => {
     const acaraId = viewData[0].id;
     window.localStorage.setItem("acaraId", acaraId);
     navigate("/data/add-kegiatan");
+  };
+
+  const handleEditKegiatan = () => {
+    setEditMode(!editMode);
   };
 
   return (
@@ -39,12 +46,12 @@ function TableContainer({ viewData }) {
             <h1>{viewData.name}</h1>
           </div>
           <div className="action-button">
-            <EditButton editKegiatan={() => console.log("this works")} />
+            <EditButton editKegiatan={() => handleEditKegiatan()} />
             <AddButton addKegiatan={() => handleAddKegiatan()} />
           </div>
           <div className="tg-wrap">
             {viewData.map((item) => (
-              <Table key={item.id} item={item} />
+              <Table key={item.id} item={item} editMode={editMode} />
             ))}
           </div>
         </>
