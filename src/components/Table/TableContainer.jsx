@@ -51,7 +51,9 @@ function TableContainer({ viewData }) {
           </div>
           <div className="tg-wrap">
             {viewData.map((item) => (
-              <Table key={item.id} item={item} editMode={editMode} />
+              <table className="tg animate__animated animate__fadeIn" key={item.id}>
+                <Table key={item.id} item={item} editMode={editMode} />
+              </table>
             ))}
           </div>
         </>

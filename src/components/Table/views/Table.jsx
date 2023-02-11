@@ -4,26 +4,28 @@ import TableHeader from "./TableHeader";
 
 function Table({ item, onAddKegiatanFisik, editMode }) {
   return (
-    <table className="tg animate__animated animate__fadeIn" key={item.id}>
-      {item.kegiatan.map((kegiatan, index) => (
-        <>
-          <TableHeader
-            kegiatan={kegiatan}
-            key={kegiatan.id}
-            index={index}
-            editMode={editMode}
-            itemId={item.id}
-          />
-          <TableBody
-            kegiatan={kegiatan}
-            key={index}
-            index={index}
-            onAddKegiatanFisik={onAddKegiatanFisik}
-            itemId={item.id}
-          />
-        </>
-      ))}
-    </table>
+    <>
+      {item.kegiatan.map((kegiatan, index) => {
+        return (
+          <>
+            <TableHeader
+              kegiatan={kegiatan}
+              index={index}
+              editMode={editMode}
+              itemId={item.id}
+              key={kegiatan.id}
+            />
+            <TableBody
+              kegiatan={kegiatan}
+              index={index}
+              onAddKegiatanFisik={onAddKegiatanFisik}
+              itemId={item.id}
+              key={index}
+            />
+          </>
+        );
+      })}
+    </>
   );
 }
 
