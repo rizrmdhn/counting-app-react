@@ -22,6 +22,8 @@ function InputKegiatan() {
         setNamaKegiatan("");
         setTahunKegiatan("");
       }
+    } else {
+      window.localStorage.removeItem("editKegiatanData");
     }
   }, []);
 
@@ -31,7 +33,7 @@ function InputKegiatan() {
       const acaraId = window.localStorage.getItem("acaraId");
       dispatch(addKegiatan({ namaKegiatan, tahunKegiatan, acaraId }));
       window.localStorage.removeItem("acaraId");
-      navigate("/acara");
+      navigate(`/acara/${acaraId}/kegiatan`);
     } else {
       const editData = window.localStorage.getItem("editKegiatanData");
       const data = JSON.parse(editData);
@@ -48,8 +50,13 @@ function InputKegiatan() {
   };
 
   const handleBack = () => {
-    window.localStorage.removeItem("acaraId");
-    navigate(-1);
+    if (location.pathname === `/data/add-kegiatan`) {
+      window.localStorage.removeItem("acaraId");
+      navigate(-1);
+    } else {
+      window.localStorage.removeItem("editKegiatanData");
+      navigate(-1);
+    }
   };
 
   return (

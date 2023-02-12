@@ -1,3 +1,12 @@
+.table-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  align-items: center;
+  overflow-y: scroll;
+}
+
 /* for table */
 
 .tg {
@@ -186,5 +195,8 @@
   margin-right: 10px;
 }
 .bi-pencil-square {
+  margin-right: 10px;
+}
+.bi-filetype-pdf {
   margin-right: 10px;
 }
