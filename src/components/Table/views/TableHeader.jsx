@@ -3,8 +3,15 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { deleteKegiatan } from "../../../redux/dataSlice";
 import alphabetFormat from "../../../utils/alphabetFormat";
+import TableBody from "./TableBody";
 
-function TableHeader({ itemId, kegiatan, index, editMode }) {
+function TableHeader({
+  itemId,
+  kegiatan,
+  index,
+  onAddKegiatanFisik,
+  editMode,
+}) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -54,6 +61,13 @@ function TableHeader({ itemId, kegiatan, index, editMode }) {
           ) : null}
         </tr>
       </thead>
+      <TableBody
+        kegiatan={kegiatan}
+        index={index}
+        onAddKegiatanFisik={onAddKegiatanFisik}
+        itemId={itemId}
+        key={index}
+      />
     </>
   );
 }
