@@ -1,0 +1,85 @@
+.tg-wrap-print {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  align-items: center;
+  background-color: white;
+  color: black;
+  width: 100%;
+  margin: 25px 0px;
+}
+.tg-wrap-print .tg-print {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.tg-wrap-print .tg-print td {
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  overflow: hidden;
+  padding: 10px 5px;
+  word-break: normal;
+}
+.tg-wrap-print .tg-print th {
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  overflow: hidden;
+  padding: 10px 5px;
+  word-break: normal;
+}
+.tg-print .tg-lboi {
+  border-color: inherit;
+  text-align: left;
+  vertical-align: middle;
+}
+.tg-print .tg-9wq8 {
+  border-color: inherit;
+  text-align: center;
+  vertical-align: middle;
+}
+.tg-print .tg-0pky {
+  border-color: inherit;
+  text-align: left;
+  vertical-align: top;
+}
+.tg-print .tg-0lax {
+  text-align: left;
+  vertical-align: top;
+}
+.tg-align-center {
+  text-align: center !important;
+}
+.tg-align-right {
+  text-align: right !important;
+}
+.tg-align-left {
+  text-align: left !important;
+}
+.tg-width-100 {
+  width: 100px !important;
+}
+.tg-width-25 {
+  width: 25px !important;
+}
+.tg-width-50 {
+  width: 50px !important;
+}
+@media screen and (max-width: 767px) {
+  .tg-print {
+    width: auto !important;
+  }
+  .tg-print col {
+    width: auto !important;
+  }
+  .tg-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}

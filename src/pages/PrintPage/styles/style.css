@@ -1,0 +1,10 @@
+.print-page-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    align-items: center;
+    overflow-y: scroll;
+    background-color: white;
+    color: black;
+}

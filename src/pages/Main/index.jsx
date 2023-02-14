@@ -13,6 +13,7 @@ const ErrorPage = lazy(() => import("../../components/Error/ErrorPage"));
 const InputAcara = lazy(() => import("../../components/InputAcara"));
 const InputKegiatan = lazy(() => import("../../components/InputKegiatan"));
 const EditKegiatanFisik = lazy(() => import("../..//components/EditKegiatan"));
+const PrintPage = lazy(() => import("../PrintPage"));
 
 function MainPage({ lists, viewData }) {
   return (
@@ -37,6 +38,8 @@ function MainPage({ lists, viewData }) {
             path="/data/kegiatan-fisik/:id/edit"
             element={<EditKegiatanFisik />}
           />
+
+          <Route path="/print/table" element={<PrintPage />} />
         </Routes>
         <Modal />
       </Suspense>

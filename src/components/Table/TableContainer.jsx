@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Table from "./views/Table";
 import "./styles/styles.css";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -9,12 +9,10 @@ import { fetchViewData, isLoadingState } from "../../redux/dataSlice";
 import Loader from "../Loader";
 import currencyFormat from "../../utils/currencyFormat";
 import PrintButton from "../Button/PrintButton";
-import { useReactToPrint } from "react-to-print";
 
 function TableContainer({ viewData }) {
   const isLoading = useSelector(isLoadingState);
 
-  const componentRef = useRef();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -40,10 +38,9 @@ function TableContainer({ viewData }) {
     setEditMode(!editMode);
   };
 
-  const handlePrint = useReactToPrint({
-    content: () => componentRef.current,
-  });
-
+  const handlePrint = () => {
+    navigate("/print/table");
+  };
   return (
     <>
       {isLoading === true ? (
@@ -61,7 +58,6 @@ function TableContainer({ viewData }) {
           <div className="tg-wrap">
             {viewData.map((item) => (
               <table
-                ref={componentRef}
                 className="tg animate__animated animate__fadeIn"
                 key={item.id}
               >

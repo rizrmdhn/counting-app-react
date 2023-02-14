@@ -8,7 +8,7 @@ function PrintButton({ printKegiatan }) {
         onClick={printKegiatan}
       >
         <i className="bi bi-filetype-pdf"></i>
-        Print Kegiatan{" "}
+        Print Table{" "}
       </button>
     </>
   );
